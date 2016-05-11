@@ -3,7 +3,6 @@ var account = new Vue({
   ready: function() {
     var key = getCookie('cloudant_key');
     if (!key) return;
-    console.log(buildQuery('/_all_docs?limit=1', key));
     Vue.http.headers.common['Authorization'] = "Basic " + btoa(key);
     Vue.http.get(buildQuery('/_all_docs?limit=1')).then(function (res) {
       /* Admin key is valid, authentication was successful */
@@ -20,6 +19,14 @@ var account = new Vue({
     });
   },
   methods: {
+    signout: function() {
+      eraseCookie('cloudant_key');
+      window.location = '/';
+    },
+    toggleAdmin: function() {
+      this.adminToggle = true;
+      this.shared.admin = !this.shared.admin;
+    },
     importKey: function() {
       console.log('import');
       var key = prompt('Paste admin key here:');
@@ -33,6 +40,7 @@ var account = new Vue({
     }
   },
   data: {
-    shared: shared  /* Data shared by all Vue Modules */
+    shared: shared,     /* Data shared by all Vue Modules */
+    adminToggle: false, /* Show toggle button */
   }
 });
