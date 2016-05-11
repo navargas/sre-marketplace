@@ -128,7 +128,10 @@
                 {{ item.desc }}
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="/" class="mdl-button mdl-js-button
+                <span v-if="shared.admin" style="overflow-wrap:break-word;">
+                  {{ item.link }}<br>
+                </span>
+                <a href="{{ item.link }}" target="_blank" class="mdl-button mdl-js-button
                    mdl-js-ripple-effect">Learn More</a>
                 <a v-if="shared.admin" href="/" class="mdl-button mdl-js-button
                    mdl-js-ripple-effect">Change Link</a><br v-if="shared.admin">
