@@ -49,6 +49,11 @@ var index = new Vue({
         window.location = '/';
       });
     },
+    remove: function(item) {
+      deleteDocument(item, function() {
+        window.location = '/';
+      });
+    },
     newProduct: function() {
       pushDocument({
         name: 'New Document Name',

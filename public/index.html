@@ -140,7 +140,7 @@
                    mdl-js-ripple-effect" v-on:click="nextColor(item)">Change Color</a>
                 <a v-if="shared.admin" class="mdl-button mdl-js-button mdl-js-ripple-effect"
                    v-on:click="changeTextProperty('name', $index)">Change Title</a>
-                <a v-if="shared.admin" href="/" class="mdl-button mdl-js-button
+                <a v-if="shared.admin" v-on:click="remove(item)" class="mdl-button mdl-js-button
                    mdl-js-ripple-effect">Delete Product</a>
                 <a v-if="shared.admin" v-on:click="save(item)"
                    class="mdl-button mdl-js-button mdl-js-ripple-effect">Save Changes</a>

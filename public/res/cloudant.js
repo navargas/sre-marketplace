@@ -8,3 +8,16 @@ function pushDocument(doc, callback) {
     alert('Could not save document, check console');
   });
 }
+
+function deleteDocument(doc, callback) {
+  if (!doc._id) return;
+  doc._deleted = true;
+  var insert = buildQuery('/'+doc._id+'?rev='+doc._rev);
+  Vue.http.delete(insert).then(function(res) {
+    if (!callback) alert('Save complete');
+    else callback();
+  }, function(res) {
+    console.error(res);
+    alert('Could not save document, check console');
+  });
+}
