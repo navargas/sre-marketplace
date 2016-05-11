@@ -2,7 +2,7 @@ var colors = [
   "teal", "pink", "purple", "deep-purple", "indigo",
   "blue", "light-blue", "cyan", "blue-grey", "green",
   "light-green", "lime", "yellow", "amber", "orange",
-  "deep-orange", "brown", "red"
+  "deep-orange", "brown", "red", "white"
 ];
 
 /* Extract property from an array of objects */
