@@ -12,7 +12,7 @@ var account = new Vue({
         /* Admin key is not valid */
         eraseCookie('cloudant_key');
         alert('Authentication Failure');
-        window.location = '/';
+        location.reload();
       } else {
         console.error(res);
       }
@@ -21,7 +21,7 @@ var account = new Vue({
   methods: {
     signout: function() {
       eraseCookie('cloudant_key');
-      window.location = '/';
+      location.reload();
     },
     toggleAdmin: function() {
       this.adminToggle = true;
@@ -36,7 +36,7 @@ var account = new Vue({
         return;
       }
       setCookie('cloudant_key', key, 100);
-      window.location = '/';
+      location.reload();
     }
   },
   data: {

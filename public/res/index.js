@@ -49,7 +49,7 @@ var index = new Vue({
     },
     remove: function(item) {
       deleteDocument(item, function() {
-        window.location = '/';
+        location.reload();
       });
     },
     newProduct: function() {
@@ -60,7 +60,7 @@ var index = new Vue({
         color: 'red',
         desc: 'Enter description here'
       }, function () {
-        window.location = '/';
+        location.reload();
       });
     },
     loadMore: function() {
