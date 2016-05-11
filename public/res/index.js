@@ -45,7 +45,20 @@ var index = new Vue({
       if (item.color_idx >= colors.length) item.color_idx = 0;
     },
     save: function(item) {
-      pushDocument(item);
+      pushDocument(item, function() {
+        window.location = '/';
+      });
+    },
+    newProduct: function() {
+      pushDocument({
+        name: 'New Document Name',
+        link: 'http://google.com',
+        image: 'https://i.imgur.com/zn7mVz2.png',
+        color: 'red',
+        desc: 'Enter description here'
+      }, function () {
+        window.location = '/';
+      });
     },
     loadMore: function() {
       var that = this;

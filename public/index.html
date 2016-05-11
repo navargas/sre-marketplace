@@ -95,7 +95,7 @@
                 <i class="material-icons">verified_user</i>
                 Import Admin Key
               </li>
-              <li v-if="shared.admin || toggleAdmin" v-on:click="signout()" class="mdl-menu__item">
+              <li v-if="shared.admin" v-on:click="signout()" class="mdl-menu__item">
                 <i class="material-icons">close</i>
                 Sign out
               </li>
@@ -161,7 +161,7 @@
               Press the button below to add a new entry
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="/" class="mdl-button mdl-js-button
+                <a v-on:click="newProduct()" class="mdl-button mdl-js-button
                    mdl-js-ripple-effect">New Product</a>
               </div>
             </div>
