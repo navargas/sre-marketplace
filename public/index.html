@@ -133,16 +133,18 @@
                 </span>
                 <a href="{{ item.link }}" target="_blank" class="mdl-button mdl-js-button
                    mdl-js-ripple-effect">Learn More</a>
-                <a v-if="shared.admin" href="/" class="mdl-button mdl-js-button
-                   mdl-js-ripple-effect">Change Link</a><br v-if="shared.admin">
-                <a v-if="shared.admin" href="/" class="mdl-button mdl-js-button
-                   mdl-js-ripple-effect">Change Color</a>
-                <a v-if="shared.admin" href="/" class="mdl-button mdl-js-button
-                   mdl-js-ripple-effect">Change Title</a><br v-if="shared.admin">
+                <a v-if="shared.admin" class="mdl-button mdl-js-button mdl-js-ripple-effect"
+                   v-on:click="changeTextProperty('link', $index)">Change Link</a>
+                <br v-if="shared.admin">
+                <a v-if="shared.admin" class="mdl-button mdl-js-button
+                   mdl-js-ripple-effect" v-on:click="nextColor(item)">Change Color</a>
+                <a v-if="shared.admin" class="mdl-button mdl-js-button mdl-js-ripple-effect"
+                   v-on:click="changeTextProperty('name', $index)">Change Title</a>
                 <a v-if="shared.admin" href="/" class="mdl-button mdl-js-button
                    mdl-js-ripple-effect">Delete Product</a>
-                <a v-if="shared.admin" href="/" class="mdl-button mdl-js-button
-                   mdl-js-ripple-effect">Save Changes</a><br v-if="shared.admin">
+                <a v-if="shared.admin" v-on:click="save(item)"
+                   class="mdl-button mdl-js-button mdl-js-ripple-effect">Save Changes</a>
+                <br v-if="shared.admin">
               </div>
             </div>
             <div class="demo-separator mdl-cell--1-col"></div>
@@ -235,9 +237,21 @@
       </defs>
     </svg>
     <script>
+      /* Constants */
+      var ACCOUNT = '24b8ec10-c7ad-4100-aa31-d23be01d2f92-bluemix.cloudant.com/';
+      var DATABASE = 'marketplace-prod';
+      var ALL_DOC_QUERY = '/_all_docs?include_docs=true&conflicts=true';
+      var PER_PAGE = 10 * 3; /* 10 rows of 3 items per column */
+
       /* Data shared between all Vue modules */
       var shared = {
         admin: false      /* Session has valid key */
+      }
+
+      /* Build Cloudant query. */
+      function buildQuery(query) {
+        var url = 'https://' + ACCOUNT + DATABASE + query;
+        return url;
       }
 
       /* W3 cookie write function */
@@ -269,6 +283,7 @@
         return "";
       }
     </script>
+    <script src="res/cloudant.js"></script>
     <script src="res/vue.min.js"></script>
     <script src="res/vue-resource.min.js"></script>
     <script src="res/vue-infinite-scroll.js"></script>

@@ -1,13 +1,8 @@
-var account = '24b8ec10-c7ad-4100-aa31-d23be01d2f92-bluemix.cloudant.com/';
-var database = 'marketplace-prod';
-var all_doc_query = '/_all_docs?include_docs=true&conflicts=true';
-var PER_PAGE = 10 * 3; /* 10 rows of 3 items per column */
-
 var colors = [
-  "red", "pink", "purple", "deep-purple", "indigo",
-  "blue", "light-blue", "cyan", "teal", "green",
+  "teal", "pink", "purple", "deep-purple", "indigo",
+  "blue", "light-blue", "cyan", "blue-grey", "green",
   "light-green", "lime", "yellow", "amber", "orange",
-  "deep-orange", "brown", "blue-grey"
+  "deep-orange", "brown", "red"
 ];
 
 /* Extract property from an array of objects */
@@ -20,17 +15,9 @@ function unpackAttribute(array, key) {
   return result;
 }
 
-/* Build Cloudant query. "authentication" is not required for
-   most operations */
-function buildQuery(query, authentication) {
-  if (!authentication) authentication = '';
-  var url = 'https://' + authentication + '@' + account + database + query;
-  return url;
-}
-
 /* Download documents from Cloudant */
 function getDocuments(page, callback) {
-  var query = all_doc_query + '&limit=' + PER_PAGE + '&skip=' + (PER_PAGE * page);
+  var query = ALL_DOC_QUERY + '&limit=' + PER_PAGE + '&skip=' + (PER_PAGE * page);
   var url = buildQuery(query);
   Vue.http.get(url).then(function (res) {
     if (callback) callback(unpackAttribute(res.data.rows, 'doc'));
@@ -46,6 +33,20 @@ var index = new Vue({
     this.loadMore();
   },
   methods: {
+    changeTextProperty: function(prop, index) {
+      var newValue = prompt("Enter new " + prop);
+      if (!newValue) return;
+      this.products[index][prop] = newValue;
+    },
+    nextColor: function(item) {
+      if (!item.color_idx) item.color_idx = 0;
+      item.color = colors[item.color_idx];
+      item.color_idx += 1;
+      if (item.color_idx >= colors.length) item.color_idx = 0;
+    },
+    save: function(item) {
+      pushDocument(item);
+    },
     loadMore: function() {
       var that = this;
       if (this.loading) return;
