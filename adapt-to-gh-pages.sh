@@ -1,8 +1,14 @@
 #!/bin/bash
 
+set -x
+
 commitId=$(git log --oneline | head -n 1)
 git checkout gh-pages
-git reset --hard origin/master
+
+rm -rf res/
+rm -f index.html
+
+git reset --hard master
 
 git rm package.json
 git rm app.js
