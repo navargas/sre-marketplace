@@ -1,6 +1,7 @@
 function pushDocument(doc, callback) {
   var insert = buildQuery('/');
   Vue.http.post(insert, doc, {emulateJSON:false}).then(function(res) {
+    doc._rev = res.data.rev
     if (!callback) alert('Save complete');
     else callback();
   }, function(res) {

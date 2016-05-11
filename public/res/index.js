@@ -45,9 +45,7 @@ var index = new Vue({
       if (item.color_idx >= colors.length) item.color_idx = 0;
     },
     save: function(item) {
-      pushDocument(item, function() {
-        window.location = '/';
-      });
+      pushDocument(item);
     },
     remove: function(item) {
       deleteDocument(item, function() {
