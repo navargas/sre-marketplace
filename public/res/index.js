@@ -5,6 +5,9 @@ var colors = [
   "deep-orange", "brown", "red", "white"
 ];
 
+var cardWidths = [3, 4, 6, 2];
+var cardWidths_idx = parseInt(getCookie('cardWidths_idx')) || 0;
+
 /* Extract property from an array of objects */
 function unpackAttribute(array, key) {
   var result = [];
@@ -63,6 +66,12 @@ var index = new Vue({
         location.reload();
       });
     },
+    changeLayout: function() {
+      cardWidths_idx += 1;
+      if (cardWidths_idx >= cardWidths.length) cardWidths_idx = 0;
+      setCookie('cardWidths_idx', cardWidths_idx);
+      this.cardRatio = cardWidths[cardWidths_idx];
+    },
     loadMore: function() {
       var that = this;
       if (this.loading) return;
@@ -90,6 +99,7 @@ var index = new Vue({
   },
   data: {
     page: 0,        /* Page of next card set */
+    cardRatio: cardWidths[cardWidths_idx], /* Share of 12 that cards occupy */
     shared: shared, /* Data shared by all Vue Modules */
     products: [     /* Card set, array of objects */
     ]

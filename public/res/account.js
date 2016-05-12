@@ -23,6 +23,7 @@ var account = new Vue({
       eraseCookie('cloudant_key');
       location.reload();
     },
+    changeLayout: index.changeLayout,
     toggleAdmin: function() {
       this.adminToggle = true;
       this.shared.admin = !this.shared.admin;
