@@ -91,7 +91,9 @@ a.deco-none {
           align-items: center;
   width: 100%;
 }
-
+.mdl-card__supporting-text {
+  height: 54px;
+}
 .demo-navigation {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
