@@ -93,6 +93,7 @@ a.deco-none {
 }
 .mdl-card__supporting-text {
   height: 54px;
+  overflow: scroll;
 }
 .demo-navigation {
   -webkit-box-flex: 1;
