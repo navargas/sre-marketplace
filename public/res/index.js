@@ -59,7 +59,7 @@ var index = new Vue({
       pushDocument({
         name: 'New Document Name',
         link: 'http://google.com',
-        image: 'https://i.imgur.com/zn7mVz2.png',
+        icon: 'remove_circle_outline',
         color: 'red',
         desc: 'Enter description here'
       }, function () {

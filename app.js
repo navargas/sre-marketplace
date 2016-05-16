@@ -6,4 +6,4 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/', express.static('public'));
 
-app.listen(process.env.WEBPORT || 8081);
+app.listen(process.env.VCAP_APP_PORT || 8081);

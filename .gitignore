@@ -3,3 +3,4 @@ node_modules/
 .swo
 mirrors.json
 .*.swo
+manifest.yml

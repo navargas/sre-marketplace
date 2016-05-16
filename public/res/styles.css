@@ -17,6 +17,14 @@
 html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
 }
+.product-icon {
+    z-index: 100;
+    position: absolute;
+    right: 6px;
+    top: 0px;
+    font-size: 72px;
+    color: rgba(59, 59, 59, 0.8) !important;
+}
 a.deco-none {
   color: inherit;
   text-decoration:none;
