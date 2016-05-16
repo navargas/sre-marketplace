@@ -14,8 +14,12 @@
  * limitations under the License.
  */
 
+@font-face {
+  font-family:"Rockwell";
+  src: url("/res/rockwell.ttf") /* EOT file for IE */
+}
 html, body {
-  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-family: 'Rockwell', 'Helvetica', sans-serif;
 }
 .product-icon {
     z-index: 100;
@@ -100,7 +104,7 @@ a.deco-none {
   width: 100%;
 }
 .mdl-card__supporting-text {
-  height: 54px;
+  height: 64px;
   overflow: scroll;
 }
 .demo-navigation {
@@ -216,11 +220,16 @@ _:-ms-input-placeholder, :root .demo-graph {
 }
 .mdl-card__title-text {
   font-size: 23px;
+  font-family: inherit;
+}
+.mdl-layout-title {
+  font-family: inherit;
 }
 .demo-cards .mdl-card__title.mdl-card__title {
   color: black;
   font-size: 24px;
   font-weight: 400;
+  font-family: inherit;
 }
 .demo-cards ul {
   padding: 0;
