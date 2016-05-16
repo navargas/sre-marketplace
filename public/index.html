@@ -137,7 +137,9 @@
                 <a v-if="!shared.admin" href="{{ item.link }}" target="_blank"
                    class="mdl-button mdl-js-button mdl-js-ripple-effect">Learn More</a>
                 <a v-else class="mdl-button mdl-js-button mdl-js-ripple-effect"
-                   v-on:click="changeTextProperty('icon', $index)">Change Icon</a>
+                   v-on:click="changeTextProperty('icon', $index, replaceWhitespace)">
+                    Change Icon
+                </a>
                 <a v-if="shared.admin" class="mdl-button mdl-js-button mdl-js-ripple-effect"
                    v-on:click="changeTextProperty('link', $index)">Change Link</a>
                 <br v-if="shared.admin">
@@ -149,6 +151,7 @@
                    mdl-js-ripple-effect">Delete Product</a>
                 <a v-if="shared.admin" v-on:click="save(item)"
                    class="mdl-button mdl-js-button mdl-js-ripple-effect">Save Changes</a>
+                <p style="color:red;" v-if="item.changed && shared.admin">Unsaved changes!</p>
                 <br v-if="shared.admin">
               </div>
             </div>

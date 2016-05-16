@@ -214,6 +214,9 @@ _:-ms-input-placeholder, :root .demo-graph {
 .demo-cards .demo-separator {
   height: 32px;
 }
+.mdl-card__title-text {
+  font-size: 23px;
+}
 .demo-cards .mdl-card__title.mdl-card__title {
   color: black;
   font-size: 24px;

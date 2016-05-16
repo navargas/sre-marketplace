@@ -36,16 +36,23 @@ var index = new Vue({
     this.loadMore();
   },
   methods: {
-    changeTextProperty: function(prop, index) {
-      var newValue = prompt("Enter new " + prop);
+    replaceWhitespace: function(input) {
+      var newStr = input.replace(' ', '_');
+      return newStr;
+    },
+    changeTextProperty: function(prop, index, filter) {
+      var newValue = prompt("Enter new " + prop, this.products[index][prop]);
       if (!newValue) return;
+      if (filter) newValue = filter(newValue);
       this.products[index][prop] = newValue;
+      this.products[index].changed = true;
     },
     nextColor: function(item) {
       if (!item.color_idx) item.color_idx = 0;
       item.color = colors[item.color_idx];
       item.color_idx += 1;
       if (item.color_idx >= colors.length) item.color_idx = 0;
+      item.changed = true;
     },
     save: function(item) {
       pushDocument(item);
@@ -61,6 +68,7 @@ var index = new Vue({
         link: 'http://google.com',
         icon: 'remove_circle_outline',
         color: 'red',
+        changed: false,
         desc: 'Enter description here'
       }, function () {
         location.reload();
