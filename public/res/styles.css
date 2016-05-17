@@ -105,7 +105,8 @@ a.deco-none {
 }
 .mdl-card__supporting-text {
   height: 64px;
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .demo-navigation {
   -webkit-box-flex: 1;
