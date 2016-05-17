@@ -135,10 +135,14 @@
                 </span>
                 <a v-if="!shared.admin" href="{{ item.link }}" target="_blank"
                    class="mdl-button mdl-js-button mdl-js-ripple-effect">Learn More</a>
+                <a v-if="!shared.admin" href="{{ item.repo }}" target="_blank" style="float:right;"
+                   class="mdl-button mdl-js-button mdl-js-ripple-effect">Github</a>
                 <a v-else class="mdl-button mdl-js-button mdl-js-ripple-effect"
                    v-on:click="changeTextProperty('icon', $index, replaceWhitespace)">
                     Change Icon
                 </a>
+                <a v-if="shared.admin" class="mdl-button mdl-js-button mdl-js-ripple-effect"
+                   v-on:click="changeTextProperty('repo', $index)">Change Repo</a>
                 <a v-if="shared.admin" class="mdl-button mdl-js-button mdl-js-ripple-effect"
                    v-on:click="changeTextProperty('link', $index)">Change Link</a>
                 <br v-if="shared.admin">
