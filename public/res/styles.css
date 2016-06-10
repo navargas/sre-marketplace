@@ -18,16 +18,17 @@
   font-family:"Rockwell";
   src: url("/res/rockwell.ttf") /* EOT file for IE */
 }
+[v-cloak] { display: none }
 html, body {
   font-family: 'Rockwell', 'Helvetica', sans-serif;
 }
 .product-icon {
-    z-index: 100;
-    position: absolute;
-    right: 6px;
-    top: 0px;
-    font-size: 72px;
-    color: rgba(59, 59, 59, 0.8) !important;
+  z-index: 100;
+  position: absolute;
+  right: 6px;
+  top: 0px;
+  font-size: 72px;
+  color: rgba(59, 59, 59, 0.8) !important;
 }
 a.deco-none {
   color: inherit;

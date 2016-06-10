@@ -112,7 +112,7 @@
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
         <div id="mainbox" v-infinite-scroll="pageBottom()" class="mdl-grid demo-content">
-          <div v-for="item in products" class="demo-cards mdl-cell mdl-cell--{{ cardRatio }}-col
+          <div v-cloak v-for="item in products" class="demo-cards mdl-cell mdl-cell--{{ cardRatio }}-col
                       mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
             <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--{{ cardRatio }}-col
                         mdl-cell--{{ cardRatio }}-col-tablet mdl-cell--12-col-desktop">
