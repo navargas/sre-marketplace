@@ -156,6 +156,21 @@
                    class="mdl-button mdl-js-button mdl-js-ripple-effect">Save Changes</a>
                 <p style="color:red;" v-if="item.changed && shared.admin">Unsaved changes!</p>
                 <br v-if="shared.admin">
+                <div class="mdl-color-text--blue-grey-400 star-icon">
+                  <i v-if="item.voted"
+                      class="material-icons mdl-color-text--amber-500"
+                      role="presentation" style="font-size: 18px;
+                      top: 12px;" v-on:click="rateToggle(item)">star</i>
+                  <i v-else class="material-icons" role="presentation" style="
+                      font-size: 18px; cursor: pointer;
+                      top: 12px;" v-on:click="rateToggle(item)">star</i>
+                  <span v-if="item.stars > 0" style="
+                    top: -2px;
+                    font-size: 18px;
+                    /* left: 2px; */
+                    margin-left: 2px;
+                    position: relative;">{{ item.stars }}</span>
+                </div>
               </div>
             </div>
             <div class="demo-separator mdl-cell--1-col"></div>
@@ -251,7 +266,10 @@
       /* Constants */
       var ACCOUNT = 'aa5eb26f-6afe-4eb9-8105-73f9daf6a5e5-bluemix.cloudant.com/';
       var DATABASE = 'marketplace-prod';
+      var VOTES_DATABASE = 'votes-prod';
       var ALL_DOC_QUERY = '/_all_docs?include_docs=true&conflicts=true';
+      var RATINGS_VIEW = '/_design/votes/_view/new-view?' +
+                          'reduce=true&group=true';
       var PER_PAGE = 10 * 3; /* 10 rows of 3 items per column */
 
       /* Data shared between all Vue modules */
@@ -260,8 +278,8 @@
       }
 
       /* Build Cloudant query. */
-      function buildQuery(query) {
-        var url = 'https://' + ACCOUNT + DATABASE + query;
+      function buildQuery(query, db) {
+        var url = 'https://' + ACCOUNT + db + query;
         return url;
       }
 

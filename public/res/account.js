@@ -4,7 +4,7 @@ var account = new Vue({
     var key = getCookie('cloudant_key');
     if (!key) return;
     Vue.http.headers.common['Authorization'] = "Basic " + btoa(key);
-    Vue.http.get(buildQuery('/_all_docs?limit=1')).then(function (res) {
+    Vue.http.get(buildQuery('/_all_docs?limit=1', DATABASE)).then(function (res) {
       /* Admin key is valid, authentication was successful */
       this.shared.admin = true;
     }, function (res) {
