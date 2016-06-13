@@ -265,8 +265,9 @@
     <script>
       /* Constants */
       var ACCOUNT = 'aa5eb26f-6afe-4eb9-8105-73f9daf6a5e5-bluemix.cloudant.com/';
-      var DATABASE = 'marketplace-prod';
-      var VOTES_DATABASE = 'votes-prod';
+      var SUFFIX = 'prod';
+      var DATABASE = 'marketplace-' + SUFFIX;
+      var VOTES_DATABASE = 'votes-' + SUFFIX;
       var ALL_DOC_QUERY = '/_all_docs?include_docs=true&conflicts=true';
       var RATINGS_VIEW = '/_design/votes/_view/new-view?' +
                           'reduce=true&group=true';
